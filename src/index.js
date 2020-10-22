@@ -1,7 +1,12 @@
-import dva from 'dva';
+import dva from 'dva'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { I18nextProvider }  from 'react-i18next'
+
 import './index.css';
 import 'tea-component/lib/tea.css';
 import Vconsole from 'vconsole';
+import i18n from './i18n/index';
 // import { createBrowserHistory } from 'history';
 // const history = createBrowserHistory({
 //   basename: '/base-path'
@@ -27,4 +32,5 @@ require('./models').default.forEach(key => {
 app.router(require('./router').default);
 
 // 5. Start
-app.start('#root');
+const App = app.start()
+ReactDOM.render(<I18nextProvider i18n={i18n}> <App /></I18nextProvider>,  document.getElementById('root'))

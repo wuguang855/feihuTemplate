@@ -5,11 +5,13 @@ import { List, Row, Col, Button } from 'tea-component';
 import Title from './Title';
 import styles from './index.less';
 
-@connect(({ vcLogin }) => ({ vcLogin }))
 export default class IndexPage extends Component {
   static defaultProps = {};
   constructor(props) {
     super(props);
+    this.state ={
+
+    }
   }
   render() {
     console.log(this.props);

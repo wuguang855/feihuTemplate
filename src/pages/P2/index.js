@@ -1,16 +1,30 @@
+/**
+ * 多语言切换示例
+ */
 import React, { Component } from 'react';
-import { connect } from 'dva';
+import { withTranslation } from 'react-i18next';
 
-@connect(({ vcLogin }) => ({ vcLogin }))
-export default class IndexPage extends Component {
+@withTranslation()
+export default class P2 extends Component {
   static defaultProps = {};
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state={
+      language:'en'
+    }
+  }
+  changeLanguage(){
+    const {i18n} = this.props;
+    const language = this.state.language ==='en'?'zh':'en'
+     this.setState({
+      language
+     })
+      i18n.changeLanguage(language);
+  }
   render() {
-    console.log(this.props)
+    const { t } = this.props
     return (
-      <div>2222</div>
+    <div onClick={this.changeLanguage.bind(this)}>{t('hello')}</div>
     );
   }
 }

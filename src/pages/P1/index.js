@@ -1,20 +1,22 @@
+/**
+ * 函数组件示例
+ */
 import React, { Component } from 'react';
-import { connect } from 'dva';
+import Title from './Title'
+import { withTranslation } from 'react-i18next';
 
-@connect(({ vcLogin }) => ({ vcLogin }))
+@withTranslation()
 export default class IndexPage extends Component {
   static defaultProps = {};
-   constructor(props) {
-     super(props);
-     this.state ={
+  constructor(props) {
+    super(props);
+  }
 
-     }
-   }
   render() {
-    console.log(this.props.children)
+    const { t } = this.props
     return (
-      <div>11111
-{this.props.children}
+      <div>
+        <Title>{t('标题')}</Title>
       </div>
     );
   }
